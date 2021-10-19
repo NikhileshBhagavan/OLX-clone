@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Fullproduct information</title>
+        <style>
+            .hide{
+                display:none;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </head>
+    <body>
+        <img src="{{obj.mainimg.url}}">
+        <img src="{{obj.img1.url}}">
+        <img src="{{obj.img2.url}}">
+        <img src="{{obj.img3.url}}">
+        <br>
+        <h1>{{obj.category}}</h1><br>
+        <h2>{{obj.title}}</h2><br>
+        <h3>{{obj.price}}</h3><br>
+        <h4>{{obj.description}}</h4><br>
+        <b>{{obj.state}}<br>
+        {{obj.city}}<br>
+    India</b><br>
+    <button type="button" class="show">Wanna contact with seller!!</button><br>
+            <div class="hide">
+                Seller name:{{obj.sellername}}
+                Seller contact number:{{obj.contactnumber}}
+            </div>
+
+            <script>
+                document.querySelector(".show").addEventListener("click",function(e){
+                    $("div:hidden").show();
+                });
+            </script>
+
+
+    </body>
+</html>

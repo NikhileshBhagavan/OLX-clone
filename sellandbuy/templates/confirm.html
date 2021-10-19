@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Forgotpassword</title>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    <input type="password" name="OTP" placeholder="OTP">
+    <br>
+    <label>SET NEW Password:</label>
+    <br>
+    <input type="password" name="password1" placeholder="PASSWORD">
+    <br>
+    <label>CONFIRM PASSWORD:</label>
+    <br>
+    <input type="password" name="password2" placeholder="CONFIRMPASSWORD">
+    <br>
+    <input type="submit" value="SETPASSWORD">
+</form>
+<script>
+    {% for message in messages %}
+    window.alert("{{message}}");
+    {% endfor %}
+</script>
+</body>
+
+
+</html>

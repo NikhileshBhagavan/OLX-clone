@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SellURPRODUCT</title>
+    <style>
+        .store{
+            background-color:red;
+            margin: 75px auto;
+            padding: 25px 25px;
+            text-align: :center;
+            border-width: 5px;
+        }
+    </style>
+</head>
+<body>
+ {% if user.is_authenticated %}
+    <h1><b>hi {{user.username}}</b></h1><br>
+    <div class="store">
+  <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label>Choose a Category for ur selling product:</label>
+      <select name="product">
+        <option value="houses&apartments">Houses&apartments</option>
+        <option value="electronicgadgets">DIGITALGADGETS</option>
+        <option value="householdappliances">Householdappliances</option>
+        <option value="Vehicles">vehicles</option>
+      </select>
+      <br><br>
+      <label>Pleasepost your Product title here:</label><br>
+      <input type ="text" name="title" placeholder="keyfeatures(brand,age,type),etc:" required><br>
+      <label>Please give a brief description about ur product</label><br>
+      <textarea rows = "5" cols = "20" name = "description" placeholder="include condition,features,reason for selling" required>
+        
+     </textarea><br>
+     <label>Set a Price:</label><br>
+     <input type="text" name="price" placeholder="in Rs.(don't include any commas)" required>
+    <br><label>Pls upload  Main image of ur product</label> <br>
+    <input type="file" name="Mainimage" required accept=".pgj,.jpeg,.png">(.png,.jpg)  <br>
+    <label>Pls upload another 3 images covering complete description of ur product so that buyer can be comfortable</label>  <br>
+    <input type="file" name="image1" required accept=".pgj,.jpeg,.png">(.png,.jpg)  <br>
+    <input type="file" name="image2" required accept=".pgj,.jpeg,.png">(.png,.jpg)  <br>
+    <input type="file" name="image3" required accept=".pgj,.jpeg,.png">(.png,.jpg)  <br>
+    <label>State:</label><br>
+    <input type="text" name="state" placeholder="Statename" required ><br>
+    <label>City:</label><br>
+    <input type="text" name="city" placeholder="Cityname" required ><br>
+    <label>Contact Number:</label>
+    <input type="text" name="contnum" placeholder="contact number" required>
+<br><br>
+
+      
+      <input type="submit" value="SELL">
+  </form>
+  </div>
+ {% else %}
+ <b>U are not logged in please login</b><br>
+ <a href="/login/">LOGIN</a>
+ {% endif %}
+ 
+</body>
+
+
+
+
+
+</html>

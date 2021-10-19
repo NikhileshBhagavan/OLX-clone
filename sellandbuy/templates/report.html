@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>report</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <br>
+    <br><br><br><br>
+<center><div>
+   
+    <form method="POST"> 
+        {% csrf_token %}
+        Hi,{{user.username}},What improvements you want in College?
+        <br>
+        <textarea rows = "10" cols = "60" name = "description">
+           Please inform your concerns here and clicksubmit button
+        </textarea><br>
+        <input type = "submit" value = "submit" >
+    </form>
+</div>
+</center>
+{% else %}
+ <b>U are not logged in please login</b><br>
+ <a href="/login/">LOGIN</a>
+ {% endif %}
+ 
+
+</body>
+</html>

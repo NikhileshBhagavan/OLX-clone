@@ -1,0 +1,116 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sell&Buy</title>
+    <style>
+        .show{
+            background-color:silver;
+            display:none;
+            height:200px;
+            width:200px;
+            margin:20px auto;
+            border: 10px solid black;
+            text-align: :center;
+        }
+        .show:hover{
+            background-color: skyblue;
+        }
+        #load{
+            height:30px;
+            width:100px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+ {% if user.is_authenticated %}
+    hi {{user.username}}<br>
+    <a href="/login/home/sell">Sell</a><br>
+    <a href="/login/home/report">report</a><br>
+    <a href="/logout/">logout("please logout before u exit")</a><br>
+    <h1>SPECIFICATIONS:</h1>
+    <form method="POST"> 
+        {% csrf_token %}
+        <select name="product" required>
+            <option value="houses&apartments">Houses&apartments</option>
+            <option value="electronicgadgets">DIGITALGADGETS</option>
+            <option value="householdappliances">Householdappliances</option>
+            <option value="Vehicles">vehicles</option>
+          </select>
+          <br><br>
+          <label>State:</label><br>
+          <input type="text" name="state" placeholder="Statename" required><br>
+    <label>City:</label><br>
+    <input type="text" name="city" placeholder="Cityname" required ><br>
+    <input type="submit" value="Search"><br>
+
+    </form>
+    {% for ob in obj %}
+    
+    <div class="show" id="{{ob.id}}">
+       <center> <img src="{{ob.mainimg.url}}" class="hell" alt="text can't be displayed" style="width: 100px;height:100px;">
+        <br>
+        {{ob.price}}<br>
+        {{ob.category}}<br>
+        {{ob.title}}<br>
+        {{ob.city}}<br>
+        {{ob.state}}<br>
+    </center>
+    </div>
+    <br>
+    <br>
+    
+
+
+
+
+
+
+   
+
+
+
+    {% endfor %}
+    <center><button type="button" id="load">Loadmore</button></center>
+    {% for o in hel %}
+    <h1>o</h1>
+    {% endfor %}
+ {% else %}
+ <b>U are not logged in please login</b><br>
+ <a href="/login/">LOGIN</a>
+ {% endif %}
+ <script>
+    {% for message in messages %}
+    window.alert("{{message}}");
+    {% endfor %}
+    $("div").slice(0, 2).show(); // select the first ten
+    $("#load").click(function(e){ // click event for load more
+        
+        $("div:hidden").slice(0, 2).show(); // select next 10 hidden divs and show them
+        if($("div:hidden").length == 0){ // check if any hidden divs still exist
+            setTimeout(hell,750);// alert if there are none left
+        }
+    });
+    function hell(){
+        alert("no more divs");
+    }
+    var a=document.querySelectorAll(".show");
+    for(var i=0;i<a.length;i++){
+        a[i].addEventListener("click",goto);
+    }
+    function goto(){
+        window.location.href="http://127.0.0.1:8000/login/home/"+this.id+"/";
+    }
+
+
+   
+</script>
+</body>
+
+
+
+
+
+</html>
